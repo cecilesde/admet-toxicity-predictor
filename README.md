@@ -31,7 +31,7 @@ SMILES string → Morgan fingerprints (ECFP4, 1024 bits) → XGBoost → toxicit
 1. Load data via **DeepChem** (`load_tox21` with ECFP featurizer)
 2. Train one **XGBoost** classifier per endpoint, with `scale_pos_weight` tuned per task to handle class imbalance
 3. Evaluate with AUC-ROC on held-out test set
-4. Explain predictions with **SHAP** (SR-ARE deep-dive)
+4. Explain predictions with **SHAP** (SR-ARE focus)
 5. Validate on known hepatotoxic compounds
 
 ---
@@ -122,12 +122,12 @@ admet-toxicity-predictor/
 
 ## Stack
 
-- `deepchem` — dataset loading + featurization
-- `rdkit` — molecular fingerprints (Morgan/ECFP4)
-- `xgboost` — gradient boosting classifier
-- `shap` — model explainability
-- `scikit-learn` — cross-validation, metrics
-- `streamlit` — interactive prediction UI
+- `deepchem` dataset loading + featurization
+- `rdkit` molecular fingerprints (Morgan/ECFP4)
+- `xgboost` gradient boosting classifier
+- `shap` model explainability
+- `scikit-learn` cross-validation, metrics
+- `streamlit` interactive prediction UI
 
 ---
 
@@ -136,7 +136,7 @@ admet-toxicity-predictor/
 - Morgan fingerprints lose all 3D structural information
 - SR-ARE is a proxy for oxidative stress-induced hepatotoxicity, not a direct measurement
 - The model doesn't account for dose (any molecule is toxic at high enough concentration)
-- ~6k training molecules — small dataset for this kind of problem
+- ~6k training molecules: small dataset for this kind of problem
 - `MultiOutputClassifier` trains independent models: no cross-endpoint information sharing
 
 ## What I'd do next
