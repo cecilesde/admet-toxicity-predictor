@@ -40,27 +40,27 @@ SMILES string → Morgan fingerprints (ECFP4, 1024 bits) → XGBoost → toxicit
 
 | Endpoint | Test AUC |
 |----------|----------|
-| NR-AR | 0.807 |
-| NR-AR-LBD | 0.831 |
-| NR-AhR | 0.826 |
-| NR-Aromatase | 0.844 |
-| NR-ER | 0.766 |
-| NR-ER-LBD | 0.793 |
-| NR-PPAR-gamma | 0.807 |
-| SR-ARE | 0.790 |
-| SR-ATAD5 | 0.754 |
-| SR-HSE | 0.705 |
-| SR-MMP | 0.853 |
-| SR-p53 | 0.773 |
-| **Mean** | **0.796** |
+| NR-AR | 0.832 |
+| NR-AR-LBD | 0.923 |
+| NR-AhR | 0.837 |
+| NR-Aromatase | 0.806 |
+| NR-ER | 0.649 |
+| NR-ER-LBD | 0.782 |
+| NR-PPAR-gamma | 0.741 |
+| SR-ARE | 0.703 |
+| SR-ATAD5 | 0.865 |
+| SR-HSE | 0.711 |
+| SR-MMP | 0.828 |
+| SR-p53 | 0.803 |
+| **Mean** | **0.790** |
 
-AUC ~0.80 is consistent with what tree-based models achieve on Tox21. Getting above ~0.85 systematically would require graph neural networks or 3D structural features.
+AUC ~0.80 is consistent with what tree-based models achieve on Tox21. Getting above ~0.85 would require graph neural networks or 3D structural features
 
 ### ROC Curves (all 12 endpoints)
 
 ![ROC Curves](figures/roc_curves.png)
 
-### SHAP Feature Importance — SR-ARE
+### SHAP Feature Importance: SR-ARE
 
 Each point is a molecule. Red = fingerprint bit present, blue = absent. Points to the right push the prediction toward *toxic*.
 
@@ -72,10 +72,10 @@ Each point is a molecule. Red = fingerprint bit present, blue = absent. Points t
 
 | Molecule | Risk score (SR-ARE) | Prediction | Reality |
 |----------|---------------------|------------|---------|
-| Paracetamol | 0.563 | HIGH | Hepatotoxic at high doses ✓ |
-| Aspirin | 0.452 | LOW | Generally safe ✓ |
-| Troglitazone | 0.541 | HIGH | Withdrawn in 2000 for fatal hepatotoxicity ✓ |
-| Caffeine | 0.468 | LOW | Generally safe ✓ |
+| Paracetamol | 0.575 | HIGH | Hepatotoxic at high doses ✓ |
+| Aspirin | 0.419 | LOW | Generally safe ✓ |
+| Troglitazone | 0.621 | HIGH | Withdrawn in 2000 for fatal hepatotoxicity ✓ |
+| Caffeine | 0.448 | LOW | Generally safe ✓ |
 
 ---
 
@@ -113,7 +113,7 @@ admet-toxicity-predictor/
 ├── model/
 │   └── multitask_xgb.pkl          # Trained models dict {task: XGBClassifier}
 ├── figures/                        # ROC curves, SHAP plots
-├── data/                           # Tox21 raw data (auto-downloaded via DeepChem)
+├── data/                           # Tox21 raw data
 ├── app.py                          # Streamlit prediction interface
 └── src/                            # Helper utilities
 ```

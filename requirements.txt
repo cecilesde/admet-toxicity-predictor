@@ -1,0 +1,18 @@
+# App
+streamlit>=1.35
+joblib>=1.3
+numpy>=1.26
+
+# Chemistry
+rdkit>=2023.3
+
+# ML / training (notebooks)
+scikit-learn>=1.4
+xgboost>=2.0
+deepchem>=2.7
+
+# Data / visualization (notebooks)
+pandas>=2.0
+matplotlib>=3.8
+seaborn>=0.13
+shap>=0.45
